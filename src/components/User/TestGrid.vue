@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <grid-base url="/api/menus" :filter="filter" :grid-columns="gridColumns" sort-key="id" order="ASC" ></grid-base>
+    <grid-base url="/api/menus" :filters="filters" :grid-columns="gridColumns" sort-key="id" order="ASC" ></grid-base>
   </div>
 </template>
 

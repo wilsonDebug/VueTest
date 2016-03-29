@@ -13,7 +13,6 @@ export default {
   },
   data () {
     return {
-      url: '',
       filters: {
         title: 'User filterPane',
         fields: [
