@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vueTest</title>
+  </head>
+  <body>
+    <div role="main">
+      <div class="bs-example">
+        <nav role="navigation" class="navbar navbar-default navbar-static" id="navbar-example">
+          <div class="container">
+            <div class="navbar-header">
+              <button data-toggle="collapse" type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a href="#" class="navbar-brand">VueTest</a>
+            </div>
+            <menu :menus="menus"></menu>
+            <!-- /.nav-collapse -->
+          </div>
+          <!-- /.container -->
+        </nav>
+        <!-- /navbar-example -->
+      </div>
+    </div>
+    <router-view></router-view>
+  </body>
+</html>
