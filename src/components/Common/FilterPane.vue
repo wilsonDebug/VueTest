@@ -7,11 +7,11 @@
 <div class="form-horizontal">
   <fieldset>
     <legend>
-      {{title}} &nbsp;&nbsp;&nbsp;&nbsp;
+      {{filters.title}} &nbsp;&nbsp;&nbsp;&nbsp;
       <a href="#" @click="showFilter()">{{filterTitle}}<b class="caret" v-show="!isShowFilter"></b></a></legend>
     <div class="form-group" v-show="isShowFilter">
       <div class="col-md-8">
-        <div class="form-group" v-for="field in fields">
+        <div class="form-group" v-for="field in filters.fields">
           <label class="control-label text-left col-md-4" for="{{field.name}}">
             {{field.title}}
           </label>
@@ -27,7 +27,7 @@
           </label>
           <div class="col-md-8 form-inline">
             <select class="form-control" v-model="sortKey">
-              <option value="{{field.name}}" v-for="field in fields">{{field.title}}</option>
+              <option value="{{field.name}}" v-for="field in sortFields">{{field.title}}</option>
             </select>
             <input type="radio" name="order" v-model="order" value="ASC" /> <label>Asc</label>
             <input type="radio" name="order" v-model="order" value="DESC" /> <label>Desc</label>
@@ -55,7 +55,8 @@
 export default {
   props: {
     title: String,
-    fields: Array,
+    filters: Object,
+    sortFields: Array,
     sortKey: String,
     order: String
   },

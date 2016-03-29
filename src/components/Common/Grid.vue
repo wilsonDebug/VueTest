@@ -4,10 +4,10 @@
     <thead>
       <tr>
         <th v-for="key in columns"
-          @click="sortBy(key)"
-          :class="{active: sortKey == key}">
-          <a href="#">{{key | capitalize}}
-            <span class="caret" v-show="sortOrders[key] < 0"></span>
+          @click="sortBy(key.name)"
+          :class="{active: sortKey === key.name}">
+          <a href="#">{{key.name | capitalize}}
+            <span class="caret" v-show="sortOrders[key.name] < 0"></span>
           </a>
         </th>
       </tr>
@@ -15,7 +15,7 @@
     <tbody>
       <tr v-for="entry in data">
         <td v-for="key in columns">
-          {{entry[key]}}
+          {{entry[key.name]}}
         </td>
       </tr>
     </tbody>
@@ -46,11 +46,14 @@ export default {
       var newSort = this.sortOrders[key] ? (this.sortOrders[key] * -1) : -1
       var orders = {}
       this.columns.forEach(function (k) {
-        if (k === key) {
+        var keyName = k.name
+
+        console.log(k.name === key)
+        if (keyName === key) {
           self.order = (newSort < 0 ? 'ASC' : 'DESC')
-          orders[k] = newSort
+          orders[keyName] = newSort
         } else {
-          orders[k] = 1
+          orders[keyName] = 1
         }
       })
       this.$set('sortOrders', orders)
