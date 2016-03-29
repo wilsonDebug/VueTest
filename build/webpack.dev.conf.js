@@ -27,7 +27,7 @@ config.plugins = (config.plugins || []).concat([
   //copy data folder
   new TransferWebpackPlugin(
     [
-      {from: 'src/data', to: '/app/data/'},
+      // {from: 'src/data', to: '/app/data/'},
       // {from: 'src/assets/js', to: '/js/'},
       {from: 'src/assets/css', to: '/app/css/'}
     ]

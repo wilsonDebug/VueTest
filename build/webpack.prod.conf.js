@@ -58,12 +58,12 @@ config.plugins = (config.plugins || []).concat([
  //copy data folder
   new TransferWebpackPlugin(
     [
-      {from: 'src/data', to: '/data/'},
-      {from: 'src/assets/css', to: '/css/'}
+      // {from: 'src/data', to: '/data/'},
+      {from: 'src/assets/css', to: '/app/css/'}
     ]
   ),
   new HtmlWebpackPlugin({
-    filename: '../index.html',
+    filename: 'app/index.html',
     template: 'src/index.html',
     inject: true,
     minify: {
