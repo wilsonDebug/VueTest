@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div>现在使用json-server的模拟数据，模拟后端api.</div>
-    {{criteria}}
-    <filter-pane :title="filter.title" :fields.sync="filter.fields" :order-by.sync="orderBy" :order.sync="order" v-on:search="search"></filter-pane>
-    <grid :data="gridData" :columns="gridColumns"></grid>
+    {{queryUrl}}|page:{{page}}
+    <filter-pane :title="filter.title" :fields.sync="filter.fields" :sort-key.sync="sortKey" :order.sync="order" v-on:search="search"></filter-pane>
+    <grid :data="gridData" :columns="gridColumns" :sort-key.sync="sortKey" :order.sync="order"></grid>
     <pagination :page.sync="page" :page-size.sync="pageSize" :records="records"></pagination>
   </div>
 </template>
@@ -26,19 +26,23 @@ export default {
     grid,
     pagination
   },
+  props: {
+  },
   data () {
     return {
-      criteria: '',
+      url: '/api/users',
+      queryUrl: '',
       filter: {
         title: 'User filterPane',
         fields: [
           {name: 'name', title: 'Name', type: 'text'},
-          {name: 'sex', title: 'Sex', type: 'text'}
+          {name: 'sex', title: 'Sex', type: 'text'},
+          {name: 'email', title: 'Email', type: 'text'}
         ]
       },
       gridColumns: ['name', 'sex', 'email'],
       gridData: [],
-      orderBy: '',
+      sortKey: '',
       order: '',
       page: 1,
       pageSize: 10,
@@ -46,12 +50,36 @@ export default {
     }
   },
   methods: {
-    search: function (filters) {
-      console.log('parent search', filters)
-      this.criteria = filters
+    getQueryUrl: function (isStart) {
+      if (isStart) {
+        this.page = 1
+      }
 
-      this.$http({url: '/api/users?' + this.criteria + '_start=0&_limit=' + this.pageSize, method: 'GET'})
+      var arrFilters = []
+      for (var it in this.fields) {
+        var field = this.fields[it]
+        if (field.value) {
+          arrFilters.push(field.name + '_like=' + field.value)
+        }
+      }
+
+      var start = (this.page - 1) * this.pageSize
+      arrFilters.push('_start=' + start)
+      arrFilters.push('_limit=' + this.pageSize)
+      arrFilters.push('_sort=' + this.sortKey)
+      arrFilters.push('_order=' + this.order)
+
+      return this.url + '?' + arrFilters.join('&')
+    },
+    search: function (isStart) {
+      console.log('parent search isStart:', isStart)
+      this.queryUrl = this.getQueryUrl(isStart)
+
+      console.log('search queryUrl:', this.queryUrl)
+
+      this.$http({url: this.queryUrl, method: 'GET'})
       .then(function (response) {
+        console.log('search response:', response)
         var count = response.headers('X-Total-Count')
         var user = response.data
         this.gridData = user
@@ -62,34 +90,20 @@ export default {
     }
   },
   ready: function () {
-    this.$http({url: '/api/users?_start=0&_limit=' + this.pageSize, method: 'GET'})
-    .then(function (response) {
-      var count = response.headers('X-Total-Count')
-      console.log('response count:', count)
-      console.log('response.data:', response.data)
-      var user = response.data
-      this.gridData = user
-      this.records = parseInt(count)
-    },
-    function (response) {
-      // error callback
-      console.log('response:', response)
-    })
+    this.search(true)
   },
   watch: {
     page: function (oldValue, newValue) {
       console.log('arguments:', oldValue, newValue)
-      this.$http({url: '/api/users?' + this.criteria + '&_limit=' + this.pageSize + '&_start=' + (this.page - 1) * this.pageSize, method: 'GET'})
-      .then(function (response) {
-        var count = response.headers('X-Total-Count')
-        console.log('response count:', count)
-        var user = response.data
-        this.gridData = user
-        this.records = parseInt(count)
-      },
-      function (response) {
-          // error callback
-      })
+      this.search()
+    },
+    sortKey: function (oldValue, newValue) {
+      console.log('arguments:', oldValue, newValue)
+      this.search()
+    },
+    order: function (oldValue, newValue) {
+      console.log('arguments:', oldValue, newValue)
+      this.search()
     }
   }
 }

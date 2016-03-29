@@ -26,8 +26,8 @@
             Order By:
           </label>
           <div class="col-md-8 form-inline">
-            <select class="form-control" v-model="orderBy">
-              <option value="{{field.name}}" v-for="field in fields">{{field.name}}</option>
+            <select class="form-control" v-model="sortKey">
+              <option value="{{field.name}}" v-for="field in fields">{{field.title}}</option>
             </select>
             <input type="radio" name="order" v-model="order" value="ASC" /> <label>Asc</label>
             <input type="radio" name="order" v-model="order" value="DESC" /> <label>Desc</label>
@@ -56,9 +56,8 @@ export default {
   props: {
     title: String,
     fields: Array,
-    orderBy: String,
-    order: String,
-    url: String
+    sortKey: String,
+    order: String
   },
   data () {
     return {
@@ -76,25 +75,7 @@ export default {
     },
     search: function () {
       console.log('search')
-
-      var arrFilters = []
-      for (var it in this.fields) {
-        var field = this.fields[it]
-        if (field.value) {
-          arrFilters.push(field.name + '_like=' + field.value)
-        }
-      }
-
-      // var start = (page - 1) * this.pageSize
-      // arrFilters.push('_start=' + start)
-      // arrFilters.push('_limit=' + this.pageSize)
-      arrFilters.push('_sort=' + this.orderBy)
-      arrFilters.push('_order=' + this.order)
-
-      var strFilters = arrFilters.join('&')
-
-      this.$dispatch('search', strFilters)
-      console.log('dispatch filters:', strFilters)
+      this.$dispatch('search', true)
     },
     reset: function () {
       console.log('reset')
@@ -102,9 +83,6 @@ export default {
         this.fields[it].value = ''
       }
     }
-  },
-  created: function () {
-
   }
 }
 </script>

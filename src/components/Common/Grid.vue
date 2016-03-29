@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="entry in data | orderBy sortKey sortOrders[sortKey]">
+      <tr v-for="entry in data">
         <td v-for="key in columns">
           {{entry[key]}}
         </td>
@@ -27,11 +27,12 @@
 export default {
   props: {
     data: Array,
-    columns: Array
+    columns: Array,
+    sortKey: String,
+    order: String
   },
   data () {
     return {
-      sortKey: '',
       sortOrders: {}
     }
   },
@@ -40,10 +41,13 @@ export default {
       console.log('click sortBy:', key)
       this.sortKey = key
 
+      var self = this
+
       var newSort = this.sortOrders[key] ? (this.sortOrders[key] * -1) : -1
       var orders = {}
       this.columns.forEach(function (k) {
         if (k === key) {
+          self.order = (newSort < 0 ? 'ASC' : 'DESC')
           orders[k] = newSort
         } else {
           orders[k] = 1
