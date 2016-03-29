@@ -1,3 +1,4 @@
+<pre>
 # VueTest
 针对vue.js开发的一些组件示例
 
@@ -16,3 +17,4 @@ testgrid, user 页面，基本上和访问数据库一样。
 运行r.bat 就可以启动服务进行访问。
 访问localhost:8080/api/可以访问json-server 的api.
 访问localhost:8080/app/index.html, 可以访问示例程序
+</pre>
