@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <grid-base url="/api/users" :filters="filters" :grid-columns="gridColumns" sort-key="name" order="ASC" ></grid-base>
+    <grid-base url="/api/users" :filters="filters" :grid-columns="gridColumns" :is-show-action="false" :actions="actions" sort-key="name" order="ASC" :page-size-list="pageSizeList"></grid-base>
   </div>
 </template>
 
@@ -22,12 +22,18 @@ export default {
         ]
       },
       gridColumns: [
-        { name: 'name', title: 'Name' },
-        { name: 'sex', title: 'Sex' },
-        { name: 'email', title: 'Email' }
+        {name: 'name', title: 'Name', type: 'text'},
+        {name: 'sex', title: 'Sex', type: 'text'},
+        {name: 'email', title: 'Email', type: 'text'}
       ],
       sortKey: '',
-      order: ''
+      order: '',
+      // actions 暂时无用！！！！！
+      actions: {
+        label: 'Action',
+        template: ''
+      },
+      pageSizeList: [10, 20, 30, 50, 60]
     }
   }
 }

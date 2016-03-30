@@ -37,6 +37,9 @@ ul,li{
     margin: 0px 4px;
     font-size: 12px;
 }
+.page-size-list {
+  width: 140px !important;
+}
 </style>
 <template>
 <div class="container">
@@ -49,7 +52,14 @@ ul,li{
       </li>
       <li v-if="showLast"><a @click="page++">></a></li>
       <li v-if="showLast"><a @click="page=all">Last</a></li>
-      <li><a>{{page}} /{{all}} pages ({{records}} records)</a> </li>
+      <li>
+        <a>{{page}} /{{all}} pages ({{records}} records)</a>
+      </li>
+      <li>
+          <select class="form-control page-size-list" v-model="pageSize">
+            <option v-for="p in pageSizeList">{{p}}</option>
+          </select>
+      </li>
 
     </ul>
   </div>
@@ -64,6 +74,12 @@ export default {
     pageSize: {
       type: Number,
       default: 10
+    },
+    pageSizeList: {
+      type: Array,
+      default: function () {
+        return [10, 20, 30, 40, 50]
+      }
     }
   },
   computed: {
