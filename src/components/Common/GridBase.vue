@@ -3,8 +3,9 @@
     <div>现在使用json-server的模拟数据，模拟后端api.</div>
     {{queryUrl}}|page:{{page}}
     <filter-pane :filters="filters" :sort-fields.sync="gridColumns" :sort-key.sync="sortKey" :order.sync="order" v-on:search="search"></filter-pane>
-    <grid :data="gridData" :columns="gridColumns" :sort-key.sync="sortKey" :order.sync="order"></grid>
-    <pagination :page.sync="page" :page-size.sync="pageSize" :records="records"></pagination>
+    <grid :data="gridData" :columns="gridColumns" :is-show-action="isShowAction" :actions="actions" :sort-key.sync="sortKey" :order.sync="order">
+    </grid>
+    <pagination :page.sync="page" :page-size.sync="pageSize" :page-size-list="pageSizeList" :records="records"></pagination>
   </div>
 </template>
 
@@ -35,6 +36,11 @@ export default {
     },
     filters: Object,
     gridColumns: Array,
+
+    isShowAction: Boolean,
+    // actions 暂时无用！！！！！
+    actions: Array,
+
     sortKey: String,
     order: String,
     page: {
@@ -48,7 +54,8 @@ export default {
       default: function () {
         return 10
       }
-    }
+    },
+    pageSizeList: Array
   },
   data () {
     return {
@@ -104,6 +111,10 @@ export default {
     page: function (oldValue, newValue) {
       console.log('arguments:', oldValue, newValue)
       this.search()
+    },
+    pageSize: function (oldValue, newValue) {
+      console.log('arguments:', oldValue, newValue)
+      this.search(true)
     },
     sortKey: function (oldValue, newValue) {
       console.log('arguments:', oldValue, newValue)

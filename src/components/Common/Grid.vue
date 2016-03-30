@@ -10,6 +10,9 @@
             <span class="caret" v-show="sortOrders[key.name] < 0"></span>
           </a>
         </th>
+        <th v-show="isShowAction">
+          {{actions.label}}
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -17,9 +20,21 @@
         <td v-for="key in columns">
           {{entry[key.name]}}
         </td>
+        <td v-show="isShowAction">
+          <slot name="actionTemplate">
+            <div class="btn-group">
+              <button class="btn btn-primary" @click="action.edit()" v-show="!isEditing">Edit</button>
+              <button class="btn btn-primary" @click="action.save()" v-show="isEditing">Save</button>
+              <button class="btn btn-default" @click="action.delete()" v-show="!isEditing">Delete</button>
+            </div>
+          </slot>
+        </td>
       </tr>
     </tbody>
   </table>
+  <div class="form-group" v-show="isShowAction">
+    <button class="btn btn-primary" @click="action.add()">Add</button>
+  </div>
 </div>
 </template>
 
@@ -28,12 +43,45 @@ export default {
   props: {
     data: Array,
     columns: Array,
+    isShowAction: {
+      type: Boolean,
+      default: function () {
+        return false
+      }
+    },
+    // actions 暂时无用！！！！！
+    actions: {
+      type: Object,
+      default: function () {
+        return {
+          label: 'Action',
+          template: ''
+        }
+      }
+    },
     sortKey: String,
     order: String
   },
   data () {
     return {
-      sortOrders: {}
+      sortOrders: {},
+      isEditing: false,
+      action: {
+        edit: function () {
+          console.log('edit')
+          this.isEditing = true
+        },
+        delete: function () {
+          console.log('delete')
+        },
+        add: function () {
+          console.log('edit')
+        },
+        save: function () {
+          console.log('save')
+          this.isEditing = false
+        }
+      }
     }
   },
   methods: {
