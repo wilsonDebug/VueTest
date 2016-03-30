@@ -71,8 +71,8 @@ export default {
       }
 
       var arrFilters = []
-      for (var it in this.fields) {
-        var field = this.fields[it]
+      for (var it in this.filters.fields) {
+        var field = this.filters.fields[it]
         if (field.value) {
           arrFilters.push(field.name + '_like=' + field.value)
         }
