@@ -36,7 +36,7 @@ export default {
     },
     filters: Object,
     gridColumns: Array,
-
+    gridData: Array,
     isShowAction: Boolean,
     // actions 暂时无用！！！！！
     actions: Array,
@@ -60,7 +60,6 @@ export default {
   data () {
     return {
       queryUrl: '',
-      gridData: [],
       records: 0
     }
   },

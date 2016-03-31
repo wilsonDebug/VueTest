@@ -22,9 +22,6 @@ router.map({
     '/testVueStrap': {
       component: require('./components/User/TestVueStrap')
     },
-    '/editUser': {
-      component: require('./components/User/EditUser')
-    },
     '/:param': {
       component: {
         template: '<div>{{$route.params|json}}</div>'

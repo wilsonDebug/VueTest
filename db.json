@@ -31,12 +31,6 @@
       "url": "/testVueStrap"
     },
     {
-      "id": "5001",
-      "parentId": -1,
-      "menuName": "gridEdit",
-      "url": "/gridEdit"
-    },
-    {
       "id": "1003",
       "parentId": 1001,
       "menuName": "1003",

@@ -1,4 +1,5 @@
 <template>
+<!-- grid list begin-->
 <div class="container">
   <table class="table table-hover">
     <thead>
@@ -23,16 +24,50 @@
     </tbody>
   </table>
   <div class="form-group" v-show="isShowAction">
-    <!-- <button class="btn btn-primary" @click="action.add()">Add</button> -->
-    <button class="btn btn-primary" @click="action.edit()" >Edit</button>
-    <button class="btn btn-default" @click="action.delete()" >Delete</button>
+    <!-- <button class="btn btn-primary" @click="add">Add</button> -->
+    <button class="btn btn-primary" @click="edit" >Edit</button>
+    <button class="btn btn-default" @click="delete" >Delete</button>
   </div>
 </div>
+<!-- grid list end -->
+<!-- grid edit begin -->
+<modal :show.sync="showEditModal" effect="fade" width="90%">
+  <div slot="modal-header" class="modal-header">
+    <h4 class="modal-title">Edit Selected Records</h4>
+  </div>
+  <div slot="modal-body" class="modal-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th v-for="key in columns">{{key.title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="entry in gridData|filterBy true in 'isChecked'">
+          <td v-for="key in columns">
+            {{entry[key.name]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div slot="modal-footer" class="modal-footer">
+    <button type="button" class="btn btn-default" @click='showEditModal = false'>Cancel</button>
+    <button type="button" class="btn btn-success" @click='save'>Save</button>
+  </div>
+</modal>
+<!-- grid edit end -->
 </template>
 
 <script>
 import Vue from 'vue'
+import { alert, modal, datepicker } from 'vue-strap'
 export default {
+  components: {
+    alert,
+    modal,
+    datepicker
+  },
   props: {
     gridData: Array,
     columns: Array,
@@ -57,24 +92,8 @@ export default {
   },
   data () {
     return {
-      sortOrders: {},
-      action: {
-        edit: function () {
-          console.log('edit')
-          this.$dispatch('edit', true)
-        },
-        delete: function () {
-          console.log('delete')
-          this.$dispatch('edit', true)
-        },
-        add: function () {
-          console.log('edit')
-          this.$dispatch('add', true)
-        },
-        save: function () {
-          console.log('save')
-        }
-      }
+      showEditModal: false,
+      sortOrders: {}
     }
   },
   computed: {
@@ -122,6 +141,19 @@ export default {
         }
       })
       this.$set('sortOrders', orders)
+    },
+    edit: function () {
+      console.log('edit')
+      this.showEditModal = true
+    },
+    delete: function () {
+      console.log('delete')
+    },
+    add: function () {
+      console.log('edit')
+    },
+    save: function () {
+      console.log('save')
     }
   }
 }
