@@ -20,7 +20,10 @@ router.map({
       component: require('./components/User/User')
     },
     '/testVueStrap': {
-      component: require('./components/User/testVueStrap')
+      component: require('./components/User/TestVueStrap')
+    },
+    '/editUser': {
+      component: require('./components/User/EditUser')
     },
     '/:param': {
       component: {

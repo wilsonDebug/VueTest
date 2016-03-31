@@ -3,7 +3,7 @@
     <div>现在使用json-server的模拟数据，模拟后端api.</div>
     {{queryUrl}}|page:{{page}}
     <filter-pane :filters="filters" :sort-fields.sync="gridColumns" :sort-key.sync="sortKey" :order.sync="order" v-on:search="search"></filter-pane>
-    <grid :data="gridData" :columns="gridColumns" :is-show-action="isShowAction" :actions="actions" :sort-key.sync="sortKey" :order.sync="order">
+    <grid :grid-data="gridData" :columns="gridColumns" :is-show-action="isShowAction" :actions="actions" :sort-key.sync="sortKey" :order.sync="order">
     </grid>
     <pagination :page.sync="page" :page-size.sync="pageSize" :page-size-list="pageSizeList" :records="records"></pagination>
   </div>
@@ -96,8 +96,7 @@ export default {
       .then(function (response) {
         console.log('search response:', response)
         var count = response.headers('X-Total-Count')
-        var user = response.data
-        this.gridData = user
+        this.gridData = response.data
         this.records = parseInt(count)
       }, function (response) {
           // error callback

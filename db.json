@@ -25,10 +25,16 @@
       "url": "/user"
     },
     {
-      "id": "3001",
+      "id": "4001",
       "parentId": -1,
       "menuName": "VueStrap",
       "url": "/testVueStrap"
+    },
+    {
+      "id": "5001",
+      "parentId": -1,
+      "menuName": "gridEdit",
+      "url": "/gridEdit"
     },
     {
       "id": "1003",

@@ -3,6 +3,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        <th><input type="checkbox" value="true" v-model="isSelectedAll" />&nbsp;</th>
         <th v-for="key in columns"
           @click="sortBy(key.name)"
           :class="{active: sortKey === key.name}">
@@ -10,38 +11,30 @@
             <span class="caret" v-show="sortOrders[key.name] < 0"></span>
           </a>
         </th>
-        <th v-show="isShowAction">
-          {{actions.label}}
-        </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="entry in data">
+      <tr v-for="entry in gridData">
+        <td><input type="checkbox" true-value="true" false-value="false" v-model="entry.isChecked" /></td>
         <td v-for="key in columns">
           {{entry[key.name]}}
-        </td>
-        <td v-show="isShowAction">
-          <slot name="actionTemplate">
-            <div class="btn-group">
-              <button class="btn btn-primary" @click="action.edit()" v-show="!isEditing">Edit</button>
-              <button class="btn btn-primary" @click="action.save()" v-show="isEditing">Save</button>
-              <button class="btn btn-default" @click="action.delete()" v-show="!isEditing">Delete</button>
-            </div>
-          </slot>
         </td>
       </tr>
     </tbody>
   </table>
   <div class="form-group" v-show="isShowAction">
-    <button class="btn btn-primary" @click="action.add()">Add</button>
+    <!-- <button class="btn btn-primary" @click="action.add()">Add</button> -->
+    <button class="btn btn-primary" @click="action.edit()" >Edit</button>
+    <button class="btn btn-default" @click="action.delete()" >Delete</button>
   </div>
 </div>
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   props: {
-    data: Array,
+    gridData: Array,
     columns: Array,
     isShowAction: {
       type: Boolean,
@@ -65,21 +58,45 @@ export default {
   data () {
     return {
       sortOrders: {},
-      isEditing: false,
       action: {
         edit: function () {
           console.log('edit')
-          this.isEditing = true
+          this.$dispatch('edit', true)
         },
         delete: function () {
           console.log('delete')
+          this.$dispatch('edit', true)
         },
         add: function () {
           console.log('edit')
+          this.$dispatch('add', true)
         },
         save: function () {
           console.log('save')
-          this.isEditing = false
+        }
+      }
+    }
+  },
+  computed: {
+    isSelectedAll: {
+      get: function () {
+        var isCheckAll = true
+
+        for (var i in this.gridData) {
+          var item = this.gridData[i]
+          if (!item.isChecked) {
+            isCheckAll = false
+            break
+          }
+        }
+        return isCheckAll
+      },
+      set: function (newValue) {
+        console.log('set newValue:', newValue)
+
+        for (var i in this.gridData) {
+          var item = this.gridData[i]
+          Vue.set(item, 'isChecked', newValue)
         }
       }
     }

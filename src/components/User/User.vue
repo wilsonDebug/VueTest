@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <grid-base url="/api/users" :filters="filters" :grid-columns="gridColumns" :is-show-action="false" :actions="actions" sort-key="name" order="ASC" :page-size-list="pageSizeList"></grid-base>
+    <grid-base url="/api/users" :filters="filters" :grid-columns="gridColumns" :is-show-action="true" sort-key="name" order="ASC" :page-size-list="pageSizeList" @edit="edit" @add="add" @delete="delete"></grid-base>
+    <grid-edit :grid-columns="gridColumns" :data="selectedRecords" v-show="selectedRecords.length>0"></grid-edit>
   </div>
 </template>
 
@@ -33,7 +34,13 @@ export default {
         label: 'Action',
         template: ''
       },
-      pageSizeList: [10, 20, 30, 50, 60]
+      pageSizeList: [10, 20, 30, 50, 60],
+      selectedRecords: []
+    }
+  },
+  methods: {
+    edit: function (data) {
+      this.selectedRecords = data
     }
   }
 }
