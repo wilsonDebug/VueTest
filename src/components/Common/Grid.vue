@@ -10,7 +10,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th><input type="checkbox" value="true" v-model="isSelectedAll" />&nbsp;</th>
+        <th v-if="isShowAction"><input type="checkbox" value="true" v-model="isSelectedAll" />&nbsp;</th>
         <th v-for="key in columns"
           @click="sortBy(key.name)"
           :class="{active: sortKey === key.name}">
@@ -22,14 +22,14 @@
     </thead>
     <tbody>
       <tr v-for="entry in gridData">
-        <td><input type="checkbox" true-value="true" false-value="false" v-model="entry.isChecked" /></td>
+        <td v-if="isShowAction"><input type="checkbox" true-value="true" false-value="false" v-model="entry.isChecked" /></td>
         <td v-for="key in columns">
           {{entry[key.name]}}
         </td>
       </tr>
     </tbody>
   </table>
-  <div class="form-group" v-show="isShowAction">
+  <div class="form-group" v-if="isShowAction">
     <!-- <button class="btn btn-primary" @click="add">Add</button> -->
     <button class="btn btn-primary" @click="edit" >Edit</button>
     <button class="btn btn-default" @click="delete" >Delete</button>
