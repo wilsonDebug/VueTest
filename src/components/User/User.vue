@@ -36,6 +36,11 @@ export default {
       pageSizeList: [10, 20, 30, 50, 60],
       selectedRecords: []
     }
+  },
+  methods: {
+    // save: function (items) {
+    //   console.log('Save in User.vue')
+    // }
   }
 }
 

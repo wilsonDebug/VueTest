@@ -96,7 +96,13 @@ export default {
       }
     },
     sortKey: String,
-    order: String
+    order: String,
+    onSave: {
+      type: Function,
+      default: function (items) {
+        console.log('grid onSave items:', items)
+      }
+    }
   },
   data () {
     return {
@@ -162,6 +168,17 @@ export default {
     },
     save: function () {
       console.log('save')
+      this.showEditModal = false
+
+      var editGridData = []
+      for (var i in this.gridData) {
+        var tmp = this.gridData[i]
+
+        if (tmp.isChecked) {
+          editGridData.push(tmp)
+        }
+      }
+      this.onSave(editGridData)
     }
   }
 }
