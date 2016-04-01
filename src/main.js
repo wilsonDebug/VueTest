@@ -22,6 +22,9 @@ router.map({
     '/testVueStrap': {
       component: require('./components/User/TestVueStrap')
     },
+    '/testTabs': {
+      component: require('./components/User/TestTabs')
+    },
     '/:param': {
       component: {
         template: '<div>{{$route.params|json}}</div>'

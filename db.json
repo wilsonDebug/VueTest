@@ -31,6 +31,12 @@
       "url": "/testVueStrap"
     },
     {
+      "id": "5001",
+      "parentId": -1,
+      "menuName": "TestTabs",
+      "url": "/testTabs"
+    },
+    {
       "id": "1003",
       "parentId": 1001,
       "menuName": "1003",
