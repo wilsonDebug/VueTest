@@ -7,16 +7,16 @@
 <div class="form-horizontal">
   <fieldset>
     <legend>
-      {{filters.title}} &nbsp;&nbsp;&nbsp;&nbsp;
+      {{filtersTitle}} &nbsp;&nbsp;&nbsp;&nbsp;
       <a href="#" @click="showFilter()">{{filterTitle}}<b class="caret" v-show="!isShowFilter"></b></a></legend>
     <div class="form-group" v-show="isShowFilter">
       <div class="col-md-8">
-        <div class="form-group" v-for="field in filters.fields">
+        <div class="form-group" v-for="field in filtersFields">
           <label class="control-label text-left col-md-4" for="{{field.name}}">
             {{field.title}}
           </label>
           <div class="col-md-8">
-            <input name="{{field.name}}" v-model="field.value" class="form-control" type="{{field.type}}" @keyup.enter="search()"/>
+            <field :value.sync="field.value" :type="field.type" :options="field.options" :on-enter="onSearch"></field>
           </div>
         </div>
 
@@ -38,7 +38,7 @@
       <div class="col-md-4">
         <slot name="one">
           <div class="form-group">
-            <button class="btn btn-primary btn-filter" @click="search()">Search</button>
+            <button class="btn btn-primary btn-filter" @click="onSearch()">Search</button>
           </div>
           <div class="form-group">
             <button class="btn btn-default  btn-filter" @click="reset()">Reset</button>
@@ -52,13 +52,25 @@
 </template>
 
 <script>
+import field from '../Common/Field'
+
 export default {
+  components: {
+    field
+  },
   props: {
     title: String,
-    filters: Object,
+    filtersTitle: String,
+    filtersFields: Array,
     sortFields: Array,
     sortKey: String,
-    order: String
+    order: String,
+    onSearch: {
+      type: Function,
+      default: function () {
+
+      }
+    }
   },
   data () {
     return {
@@ -74,10 +86,10 @@ export default {
     showFilter: function () {
       this.isShowFilter = !this.isShowFilter
     },
-    search: function () {
-      console.log('search')
-      this.$dispatch('search', true)
-    },
+    // search: function () {
+    //   console.log('search')
+    //   this.$dispatch('search', true)
+    // },
     reset: function () {
       console.log('reset')
       for (var it in this.fields) {

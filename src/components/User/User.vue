@@ -17,13 +17,13 @@ export default {
         title: 'User filterPane',
         fields: [
           {name: 'name', title: 'Name', type: 'text'},
-          {name: 'sex', title: 'Sex', type: 'text'},
+          {name: 'sex', title: 'Sex', type: 'select', options: ['M', 'F']},
           {name: 'email', title: 'Email', type: 'text'}
         ]
       },
       gridColumns: [
         {name: 'name', title: 'Name', type: 'text'},
-        {name: 'sex', title: 'Sex', type: 'text'},
+        {name: 'sex', title: 'Sex', type: 'select', options: ['M', 'F']},
         {name: 'email', title: 'Email', type: 'text'}
       ],
       sortKey: '',

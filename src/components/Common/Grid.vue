@@ -1,3 +1,9 @@
+<style type="text/css">
+  .edit-grid {
+    max-height:500px;
+    overflow:auto;
+  }
+</style>
 <template>
 <!-- grid list begin-->
 <div class="container">
@@ -35,7 +41,7 @@
   <div slot="modal-header" class="modal-header">
     <h4 class="modal-title">Edit Selected Records</h4>
   </div>
-  <div slot="modal-body" class="modal-body">
+  <div slot="modal-body" class="modal-body edit-grid">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -44,8 +50,8 @@
       </thead>
       <tbody>
         <tr v-for="entry in gridData|filterBy true in 'isChecked'">
-          <td v-for="key in columns">
-            {{entry[key.name]}}
+           <td v-for="key in columns">
+            <field :value.sync="entry[key.name]" :type="key.type" :options="key.options"></field>
           </td>
         </tr>
       </tbody>
@@ -61,9 +67,11 @@
 
 <script>
 import Vue from 'vue'
+import field from '../Common/Field'
 import { alert, modal, datepicker } from 'vue-strap'
 export default {
   components: {
+    field,
     alert,
     modal,
     datepicker

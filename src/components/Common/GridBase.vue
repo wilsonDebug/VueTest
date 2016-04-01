@@ -2,7 +2,7 @@
   <div class="container">
     <div>现在使用json-server的模拟数据，模拟后端api.</div>
     {{queryUrl}}|page:{{page}}
-    <filter-pane :filters="filters" :sort-fields.sync="gridColumns" :sort-key.sync="sortKey" :order.sync="order" v-on:search="search"></filter-pane>
+    <filter-pane :filters-title="filters.title" :filters-fields.sync="filters.fields" :sort-fields.sync="gridColumns" :sort-key.sync="sortKey" :order.sync="order" :on-search="search"></filter-pane>
     <grid :grid-data="gridData" :columns="gridColumns" :is-show-action="isShowAction" :actions="actions" :sort-key.sync="sortKey" :order.sync="order">
     </grid>
     <pagination :page.sync="page" :page-size.sync="pageSize" :page-size-list="pageSizeList" :records="records"></pagination>
