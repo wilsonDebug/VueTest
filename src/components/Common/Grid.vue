@@ -45,17 +45,28 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>&nbsp;</th>
           <th v-for="key in columns">{{key.title}}</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="entry in gridData|filterBy true in 'isChecked'">
-           <td v-for="key in columns">
-            <field :value.sync="entry[key.name]" :type="key.type" :options="key.options"></field>
+          <td><input name="chkEntry" type="radio" true-value="true" false-value="false" @click="select(entry)" /></td>
+          <td v-for="key in columns">
+           <field :value.sync="entry[key.name]" :type="key.type" :options="key.options"></field>
           </td>
         </tr>
       </tbody>
     </table>
+    <fieldset>
+      <legend>Details</legend>
+        <div v-for="key in columns">
+          <label>{{key.title}}</label>
+          <field :value.sync="selectedRow[key.name]" :type="key.type" :options="key.options"></field>
+        </div>
+      </div>
+    </fieldset>
+    </div>
   </div>
   <div slot="modal-footer" class="modal-footer">
     <button type="button" class="btn btn-default" @click='showEditModal = false'>Cancel</button>
@@ -97,6 +108,7 @@ export default {
     },
     sortKey: String,
     order: String,
+    selectedRow: Object,
     onSave: {
       type: Function,
       default: function (items) {
@@ -155,6 +167,9 @@ export default {
         }
       })
       this.$set('sortOrders', orders)
+    },
+    select: function (entry) {
+      this.selectedRow = entry
     },
     edit: function () {
       console.log('edit')
