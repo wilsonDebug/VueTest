@@ -25,6 +25,9 @@ router.map({
     '/testTabs': {
       component: require('./components/User/TestTabs')
     },
+    '/tas001': {
+      component: require('./components/TAS001/TAS001')
+    },
     '/:param': {
       component: {
         template: '<div>{{$route.params|json}}</div>'
