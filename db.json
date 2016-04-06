@@ -1,121 +1,121 @@
 {
   "menus": [
     {
-      "id": "1001",
+      "id": 1001,
       "parentId": -1,
       "menuName": "1001",
       "url": ""
     },
     {
-      "id": "1002",
+      "id": 1002,
       "parentId": -1,
       "menuName": "1002",
       "url": ""
     },
     {
-      "id": "2001",
+      "id": 2001,
       "parentId": -1,
       "menuName": "TestGrid",
       "url": "/testGrid"
     },
     {
-      "id": "3001",
+      "id": 3001,
       "parentId": -1,
       "menuName": "User",
       "url": "/user"
     },
     {
-      "id": "4001",
+      "id": 4001,
       "parentId": -1,
       "menuName": "VueStrap",
       "url": "/testVueStrap"
     },
     {
-      "id": "5001",
+      "id": 5001,
       "parentId": -1,
       "menuName": "TestTabs",
       "url": "/testTabs"
     },
     {
-      "id": "6001",
+      "id": 6001,
       "parentId": -1,
       "menuName": "TAS001",
       "url": "/tas001"
     },
     {
-      "id": "1003",
+      "id": 1003,
       "parentId": 1001,
       "menuName": "1003",
       "url": ""
     },
     {
-      "id": "1004",
+      "id": 1004,
       "parentId": 1001,
       "menuName": "1004",
       "url": ""
     },
     {
-      "id": "1005",
+      "id": 1005,
       "parentId": 1002,
       "menuName": "1005",
       "url": ""
     },
     {
-      "id": "1006",
+      "id": 1006,
       "parentId": 1002,
       "menuName": "1006",
       "url": "/1006"
     },
     {
-      "id": "1007",
+      "id": 1007,
       "parentId": 1003,
       "menuName": "1007",
       "url": ""
     },
     {
-      "id": "1008",
+      "id": 1008,
       "parentId": 1003,
       "menuName": "1008",
       "url": "/1008"
     },
     {
-      "id": "1009",
+      "id": 1009,
       "parentId": 1004,
       "menuName": "1009",
       "url": ""
     },
     {
-      "id": "1010",
+      "id": 1010,
       "parentId": 1004,
       "menuName": "1010",
       "url": "/1010"
     },
     {
-      "id": "1011",
+      "id": 1011,
       "parentId": 1005,
       "menuName": "1011",
       "url": "/1011"
     },
     {
-      "id": "1012",
+      "id": 1012,
       "parentId": 1005,
       "menuName": "1012",
       "url": "/1012"
     },
     {
-      "id": "1013",
+      "id": 1013,
       "parentId": 1009,
       "menuName": "1013",
       "url": "/1013"
     },
     {
-      "id": "1014",
+      "id": 1014,
       "parentId": 1009,
       "menuName": "1014",
       "url": "/1014"
     },
     {
-      "id": "1015",
+      "id": 1015,
       "parentId": 1007,
       "menuName": "testGrid",
       "url": "/testGrid"

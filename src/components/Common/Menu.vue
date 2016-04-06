@@ -54,7 +54,7 @@
           <b class="caret" v-show="isShowCaret(menu)"></b>
         </a>
         <ul class="dropdown-menu" v-bind:class="{'show-menu': isShowChild(menu)}"><!--第二层菜单-->
-          <li class="{{parentIds[m.id] ? 'dropdown-submenu':'dropdown-menu'}}"  v-for="m in childMenus|filterBy menu.id in 'parentId'">
+          <li class="{{parentIds[m.id] ? 'dropdown-submenu':''}}" v-for="m in childMenus|filterBy menu.id in 'parentId'">
             <a href="#" tabindex="-1" data-toggle="dropdown" v-link="{path: m.url }">{{m.menuName}}</a>
             <child :child-menus="childMenus" :parent-ids="parentIds" :parent-menu="m" :active-parent-menu.sync="activeParentMenu"></child>
           </li>
@@ -73,14 +73,14 @@ Vue.component('child', {
     parentIds: Object,
     childMenus: Array,
     activeParentMenu: {
-      type: String,
+      type: Number,
       twoWay: true
     }
   },
   methods: {
     resetMenu: function () {
       console.log('resetMenu')
-      this.activeParentMenu = ''
+      this.activeParentMenu = 0
     }
   },
   name: 'child',
@@ -97,7 +97,7 @@ export default {
       topMenus: [],
       childMenus: [],
       parentIds: {},
-      activeParentMenu: ''
+      activeParentMenu: 0
     }
   },
   props: {
