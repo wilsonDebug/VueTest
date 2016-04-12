@@ -55,7 +55,7 @@
         </a>
         <ul class="dropdown-menu" v-bind:class="{'show-menu': isShowChild(menu)}"><!--第二层菜单-->
           <li class="{{parentIds[m.id] ? 'dropdown-submenu':''}}" v-for="m in childMenus|filterBy menu.id in 'parentId'">
-            <a href="#" tabindex="-1" data-toggle="dropdown" v-link="{path: m.url }">{{m.menuName}}</a>
+            <a href="#" tabindex="-1" data-toggle="dropdown" v-link="{path: m.url }" @click="resetMenu()">{{m.menuName}}</a>
             <child :child-menus="childMenus" :parent-ids="parentIds" :parent-menu="m" :active-parent-menu.sync="activeParentMenu"></child>
           </li>
         </ul>
@@ -79,7 +79,6 @@ Vue.component('child', {
   },
   methods: {
     resetMenu: function () {
-      console.log('resetMenu')
       this.activeParentMenu = 0
     }
   },
@@ -112,6 +111,9 @@ export default {
     },
     isShowChild: function (menu) {
       return (menu.id === this.activeParentMenu) && menu.url === '' && this.parentIds[menu.id]
+    },
+    resetMenu: function () {
+      this.activeParentMenu = 0
     }
   },
   watch: {
