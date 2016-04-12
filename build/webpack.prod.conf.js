@@ -59,6 +59,7 @@ config.plugins = (config.plugins || []).concat([
   new TransferWebpackPlugin(
     [
       // {from: 'src/data', to: '/data/'},
+      {from: 'src/assets/skins', to: '/app/skins/'},
       {from: 'src/assets/css', to: '/app/css/'}
     ]
   ),

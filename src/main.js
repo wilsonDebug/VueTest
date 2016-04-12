@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Menu from './components/Common/Menu'
 
-require('bootstrap/dist/css/bootstrap.min.css')
-require('./assets/css/custom.css')
-
 Vue.use(require('vue-resource'));
 Vue.http.options.emulateJSON = true;
 Vue.http.options.emulateHTTP = true;
@@ -36,10 +33,19 @@ router.map({
 });
 
 router.beforeEach(function (transition) {
-  console.log('transition.to.path:',transition.to.path);
-  if (transition.to.path === '/' || transition.to.path.indexOf('/api') > 0) {
+  console.log('transition:', transition)
+  var path = transition.to.path
+  console.log('transition.to.path:',path);
+  console.log('skins:', path.indexOf('/skins/'))
+  if (path === '/' || path.indexOf('/api') >= 0 || path.indexOf('/skins/') >= 0) {
+
+    if(path.indexOf('/skins/') >= 0) {
+        router.app.skins = path.replace('/skins/','')
+        console.log('router.app.skins:', router.app.skins)
+    }
     transition.abort()
-  } else {
+  }
+  else {
     transition.next()
   }
 });
@@ -49,8 +55,11 @@ var app = Vue.extend({
   components: {
     Menu
   },
-  data: {
-    menus: []
+  data: function () {
+    return {
+      menus: [],
+      skins: 'default'
+    }
   },
   ready() {
     this.$http({url: '/api/menus', method: 'GET'}).then(function (response) {

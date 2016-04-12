@@ -13,36 +13,6 @@
       "url": ""
     },
     {
-      "id": 2001,
-      "parentId": -1,
-      "menuName": "TestGrid",
-      "url": "/testGrid"
-    },
-    {
-      "id": 3001,
-      "parentId": -1,
-      "menuName": "User",
-      "url": "/user"
-    },
-    {
-      "id": 4001,
-      "parentId": -1,
-      "menuName": "VueStrap",
-      "url": "/testVueStrap"
-    },
-    {
-      "id": 5001,
-      "parentId": -1,
-      "menuName": "TestTabs",
-      "url": "/testTabs"
-    },
-    {
-      "id": 6001,
-      "parentId": -1,
-      "menuName": "TAS001",
-      "url": "/tas001"
-    },
-    {
       "id": 1003,
       "parentId": 1001,
       "menuName": "1003",
@@ -119,6 +89,150 @@
       "parentId": 1007,
       "menuName": "testGrid",
       "url": "/testGrid"
+    },
+    {
+      "id": 2000,
+      "parentId": -1,
+      "menuName": "TestGrid",
+      "url": "/testGrid"
+    },
+    {
+      "id": 3000,
+      "parentId": -1,
+      "menuName": "User",
+      "url": "/user"
+    },
+    {
+      "id": 4000,
+      "parentId": -1,
+      "menuName": "VueStrap",
+      "url": "/testVueStrap"
+    },
+    {
+      "id": 5000,
+      "parentId": -1,
+      "menuName": "TestTabs",
+      "url": "/testTabs"
+    },
+    {
+      "id": 6000,
+      "parentId": -1,
+      "menuName": "TAS001",
+      "url": "/tas001"
+    },
+    {
+      "id": 7000,
+      "parentId": -1,
+      "menuName": "Themes",
+      "url": ""
+    },
+    {
+      "id": 7001,
+      "parentId": 7000,
+      "menuName": "default",
+      "url": "/skins/default"
+    },
+    {
+      "id": 7002,
+      "parentId": 7000,
+      "menuName": "________________",
+      "url": ""
+    },
+    {
+      "id": 7003,
+      "parentId": 7000,
+      "menuName": "cerulean",
+      "url": "/skins/cerulean"
+    },
+    {
+      "id": 7004,
+      "parentId": 7000,
+      "menuName": "cosmo",
+      "url": "/skins/cosmo"
+    },
+    {
+      "id": 7005,
+      "parentId": 7000,
+      "menuName": "cyborg",
+      "url": "/skins/cyborg"
+    },
+    {
+      "id": 7006,
+      "parentId": 7000,
+      "menuName": "darkly",
+      "url": "/skins/darkly"
+    },
+    {
+      "id": 7007,
+      "parentId": 7000,
+      "menuName": "flatly",
+      "url": "/skins/flatly"
+    },
+    {
+      "id": 7007,
+      "parentId": 7000,
+      "menuName": "journal",
+      "url": "/skins/journal"
+    },
+    {
+      "id": 7008,
+      "parentId": 7000,
+      "menuName": "lumen",
+      "url": "/skins/lumen"
+    },
+    {
+      "id": 7009,
+      "parentId": 7000,
+      "menuName": "paper",
+      "url": "/skins/paper"
+    },
+    {
+      "id": 7010,
+      "parentId": 7000,
+      "menuName": "readable",
+      "url": "/skins/readable"
+    },
+    {
+      "id": 7011,
+      "parentId": 7000,
+      "menuName": "sandstone",
+      "url": "/skins/sandstone"
+    },
+    {
+      "id": 7012,
+      "parentId": 7000,
+      "menuName": "simplex",
+      "url": "/skins/simplex"
+    },
+    {
+      "id": 7013,
+      "parentId": 7000,
+      "menuName": "slate",
+      "url": "/skins/slate"
+    },
+    {
+      "id": 7014,
+      "parentId": 7000,
+      "menuName": "spacelab",
+      "url": "/skins/spacelab"
+    },
+    {
+      "id": 7015,
+      "parentId": 7000,
+      "menuName": "superhero",
+      "url": "/skins/superhero"
+    },
+    {
+      "id": 7016,
+      "parentId": 7000,
+      "menuName": "united",
+      "url": "/skins/united"
+    },
+    {
+      "id": 7017,
+      "parentId": 7000,
+      "menuName": "yeti",
+      "url": "/skins/yeti"
     }
   ],
   "users": [

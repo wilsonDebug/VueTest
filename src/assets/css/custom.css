@@ -12,52 +12,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/*.btn {
-	background: #704100;
-	width: 100%;
-	color: #FFF;
-}
-.btn:hover {
-	background: #EFC06C !important;
-}*/
-
-#people {
-  text-align: center;
-  width: 95%;
-  margin: 0 auto;
-}
-
-h2 {
-  margin-bottom: 30px;
-}
-
-th,
-td {
-  text-align: left;
-}
-
-th:nth-child(n+2),
-td:nth-child(n+2) {
-  text-align: center;
-}
-
-thead tr:nth-child(2) th {
-  font-weight: normal;
-}
-
-.VueTables__sort-icon {
-  margin-left: 10px;
-}
-
-.VueTables__dropdown-pagination {
-  margin-left: 10px;
-}
-
-.VueTables__highlight {
-  background: yellow;
-  font-weight: normal;
-}
-
-.VueTables__sortable {
-  cursor: pointer;
+.nowrap {
+  white-spacing: nowrap !important;
 }

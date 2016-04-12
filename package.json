@@ -9,7 +9,6 @@
     "test": "karma start build/karma.conf.js --single-run"
   },
   "dependencies": {
-    "bootstrap": "^3.3.6",
     "font-awesome": "^4.5.0",
     "jquery": "^2.2.1",
     "json-server": "^0.8.9",

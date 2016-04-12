@@ -1,38 +1,52 @@
 <template>
   <div class="container">
-    <grid-base url="/api/menus" :filters="filters" :grid-columns="gridColumns" :is-show-action="false" :actions="actions" sort-key="id" order="ASC" :page-size-list="pageSizeList"></grid-base>
+    <fieldset>
+      <tabs>
+        <tab header="subtab1">
+          <div class="form-group">
+            <accident></accident>
+          </div>
+        </tab>
+        <tab header="subtab2">
+          <div class="form-group">
+            <environment></environment>
+          </div>
+        </tab>
+        <tab header="subtab3">
+          <div class="form-group">
+            <driver></driver>
+          </div>
+        </tab>
+        <tab header="subtab4">
+          <div class="form-group">
+            <driver1></driver1>
+          </div>
+        </tab>
+      </tabs>
+    </fieldset>
   </div>
 </template>
 
 <script>
-import gridBase from '../Common/GridBase'
+import tabs from 'vue-strap/src/Tabset.vue'
+import tab from 'vue-strap/src/Tab.vue'
+import driver1 from '../TAS001/Driver1'
+import accident from '../TAS001/Accident'
+import environment from '../TAS001/Environment'
+import driver from '../TAS001/Driver'
 
 export default {
   components: {
-    gridBase
+    tabs,
+    tab,
+    driver1,
+    accident,
+    environment,
+    driver
   },
   data () {
     return {
-      filters: {
-        title: 'TestGrid filterPane',
-        fields: [
-          {name: 'id', title: 'Id', type: 'number'},
-          {name: 'parentId', title: 'Parent Id', type: 'number'},
-          {name: 'menuName', title: 'Menu Name', type: 'text'}
-        ]
-      },
-      gridColumns: [
-        {name: 'id', title: 'Id', type: 'number'},
-        {name: 'parentId', title: 'Parent Id', type: 'number'},
-        {name: 'menuName', title: 'Menu Name', type: 'text'},
-        { name: 'url', title: 'Url', type: 'text' }
-      ],
-      // actions 暂时无用！！！！！
-      actions: {
-        label: 'Action',
-        template: ''
-      },
-      pageSizeList: [10, 20, 30, 50]
+
     }
   }
 }

@@ -23,6 +23,12 @@
             <input class="form-control"></input>
           </div>
         </div>
+        <div class="col-md-3">
+          <label class="col-md-6">Report Number1111</label>
+          <div class="col-md-6">
+            <input class="form-control"></input>
+          </div>
+        </div>
 
         <div class="col-md-3">
           <label class="col-md-7">Last Updated by TOMS on</label>
@@ -49,6 +55,11 @@
             <driver></driver>
           </div>
         </tab>
+        <tab header="Driver1">
+          <div class="form-group">
+            <driver1></driver1>
+          </div>
+        </tab>
       </tabs>
     </fieldset>
   </div>
@@ -57,7 +68,7 @@
 <script>
 import tabs from 'vue-strap/src/Tabset.vue'
 import tab from 'vue-strap/src/Tab.vue'
-
+import driver1 from '../TAS001/Driver1'
 import accident from '../TAS001/Accident'
 import environment from '../TAS001/Environment'
 import driver from '../TAS001/Driver'
@@ -66,6 +77,7 @@ export default {
   components: {
     tabs,
     tab,
+    driver1,
     accident,
     environment,
     driver
