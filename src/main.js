@@ -8,6 +8,23 @@ Vue.use(require('vue-resource'));
 Vue.http.options.emulateJSON = true;
 Vue.http.options.emulateHTTP = true;
 
+//ajax 拦截
+Vue.http.interceptors.push({
+  request: function (request) {
+    return request
+  },
+  response: function (response) {
+    var status = response.status;
+    if(status === 404) {
+
+    }
+    if(response.data.STATUS) {
+      console.log('response.data.STATUS:', response.data.STATUS)
+    }
+    return response
+  }
+});
+
 var VueRouter = require('vue-router');
 Vue.use(VueRouter);
 

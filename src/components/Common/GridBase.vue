@@ -10,16 +10,9 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import grid from '../Common/Grid'
 import filterPane from '../Common/filterPane'
 import pagination from '../Common/Pagination'
-
-require('bootstrap/dist/css/bootstrap.css')
-
-Vue.use(require('vue-resource'))
-Vue.http.options.emulateJSON = true
-Vue.http.options.emulateHTTP = true
 
 export default {
   components: {

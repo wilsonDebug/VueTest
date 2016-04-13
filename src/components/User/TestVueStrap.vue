@@ -154,19 +154,10 @@
     <aside :show.sync="showLeft" placement="left" header="Title" :width="350">
     sdfsdfs
     </aside>
-
-
-
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-
-Vue.use(require('vue-resource'))
-Vue.http.options.emulateJSON = true
-Vue.http.options.emulateHTTP = true
-
 import tabs from 'vue-strap/src/Tabset.vue'
 import tab from 'vue-strap/src/Tab.vue'
 import vSelect from 'vue-strap/src/Select.vue'
