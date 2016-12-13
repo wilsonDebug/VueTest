@@ -50,10 +50,10 @@ app.use(hotMiddleware)
 //             });
 // app.use(proxy);
 
-app.listen(8080, 'localhost', function (err) {
+app.listen(8090, 'localhost', function (err) {
   if (err) {
     console.log(err)
     return
   }
-  console.log('Listening at http://localhost:8080')
+  console.log('Listening at http://localhost:8090')
 })

@@ -41,8 +41,8 @@ testgrid, user 页面，基本上和访问后端数据库一样，可以完全�
 
     运行完毕后，就可以启动服务进行访问。
 
-    访问localhost:8080/api/*， 可以访问json-server 的api.
+    访问localhost:8090/api/*， 可以访问json-server 的api.
 
-    访问localhost:8080/app/index.html, 可以访问示例程序。
+    访问localhost:8090/app/index.html, 可以访问示例程序。
 
 运行效果可以参考Img目录下的图片。
